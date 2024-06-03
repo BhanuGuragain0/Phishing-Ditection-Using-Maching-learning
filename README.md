@@ -38,11 +38,9 @@ python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
     --num_emails: Number of emails to generate.
     --file_path: Path to save the generated CSV file.
 
-Training the Model and Checking Emails
+Training the Model and Checking Emails:
 
-Check emails for phishing:
-
-    python email_checker.py
+    `python email_checker.py`
 
 Follow the prompts to enter email texts and check if they are phishing or not.
 Configuration
