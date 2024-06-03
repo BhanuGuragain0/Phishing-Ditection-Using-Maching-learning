@@ -1,7 +1,3 @@
-# Phishing-Ditection-Using-Maching-learning
-
-markdown
-
 # Phishing Email Detection
 
 This repository contains scripts to generate phishing and non-phishing emails and to train and utilize a machine learning model for phishing email detection.
@@ -38,7 +34,6 @@ The project consists of two main scripts:
 
 Use `csv_maker.py` to generate a dataset of emails.
 
-```sh
 python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
 
     --num_emails: Number of emails to generate.
@@ -50,45 +45,25 @@ Use email_checker.py to train the model and check emails for phishing.
 
     Train the model:
 
-    sh
-
 python email_checker.py --config config.ini
 
 Check emails for phishing:
-
-sh
 
     python email_checker.py
 
 Follow the prompts to enter email texts and check if they are phishing or not.
 Configuration
 
-The config.ini file is used to configure the file path for the email dataset:
 
-ini
-
-[DEFAULT]
-FilePath = ./email_data.csv
-
-Example config.ini:
-
-ini
-
-[DEFAULT]
-FilePath = /path/to/your/email_data.csv
-
-Contributing
+## Contributing
 
 Contributions are welcome! Please fork this repository and submit pull requests.
-License
+
+## License
 
 This project is licensed under the MIT License.
 
-arduino
-
-requirements
-
-plaintext
+## requirements:--
 
 pandas
 numpy
