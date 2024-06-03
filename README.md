@@ -1,9 +1,6 @@
-# Phishing Ditection Using Machine Learning
 
 ```markdown
 # Phishing Email Detection
-
-![Phishing Email Detection](https://img.shields.io/badge/Phishing%20Email%20Detection-V1.0-brightgreen)
 
 This repository contains scripts to generate phishing and non-phishing emails and to train and utilize a machine learning model for phishing email detection.
 
@@ -19,7 +16,6 @@ The project consists of two main scripts:
 - [Usage](#usage)
   - [Generating the Email Dataset](#generating-the-email-dataset)
   - [Training the Model and Checking Emails](#training-the-model-and-checking-emails)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
@@ -45,20 +41,16 @@ python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
 python email_checker.py
 ```
 
-Follow the prompts to enter email texts and check if they are phishing or not.
-
-## Contributing
-Contributions are welcome! Please fork this repository and submit pull requests.
+`Follow the prompts to enter email texts and check if they are phishing or not.`
 
 ## License
 This project is licensed under the MIT License.
 
 ## Requirements
+```
 - pandas
 - numpy
 - scikit-learn
 - nltk
 - joblib
 ```
-
-Feel free to adjust the colors, styles, or any other aspects to better suit your preferences! Let me know if you need any further modifications.
