@@ -16,7 +16,6 @@ The project consists of two main scripts:
 - [Usage](#usage)
   - [Generating the Email Dataset](#generating-the-email-dataset)
   - [Training the Model and Checking Emails](#training-the-model-and-checking-emails)
-- [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -29,7 +28,7 @@ The project consists of two main scripts:
 
 
 ## Usage
-
+```
 ### Generating the Email Dataset
 
 Use `csv_maker.py` to generate a dataset of emails.
@@ -41,19 +40,13 @@ python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
 
 Training the Model and Checking Emails
 
-Use email_checker.py to train the model and check emails for phishing.
-
-    Train the model:
-
-python email_checker.py --config config.ini
-
 Check emails for phishing:
 
     python email_checker.py
 
 Follow the prompts to enter email texts and check if they are phishing or not.
 Configuration
-
+```
 
 ## Contributing
 
@@ -64,10 +57,10 @@ Contributions are welcome! Please fork this repository and submit pull requests.
 This project is licensed under the MIT License.
 
 ## requirements:--
-
+```
 pandas
 numpy
 scikit-learn
 nltk
 joblib
-
+```
