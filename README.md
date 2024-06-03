@@ -1,4 +1,4 @@
-Sure! Here's an updated version of your `README.md` with some color and formatting to make it more appealing:
+# Phishing Ditection Using Machine Learning
 
 ```markdown
 # Phishing Email Detection
@@ -33,7 +33,6 @@ The project consists of two main scripts:
 
 Use `csv_maker.py` to generate a dataset of emails.
 
-```bash
 python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
 ```
 
@@ -42,7 +41,7 @@ python csv_maker.py --num_emails 100000 --file_path ./email_data.csv
 
 ### Training the Model and Checking Emails:
 
-```bash
+```
 python email_checker.py
 ```
 
