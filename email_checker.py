@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import logging
 import re
@@ -90,12 +91,15 @@ def predict_email(model, vectorizer, email_text):
     prediction = model.predict(email_vec)
     return "Phishing" if prediction[0] == 1 else "Normal"
 
-def generate_report(predictions, file_path):
-    """Generate a prediction report."""
+def generate_report(predictions, file_path, output_format="txt"):
+    """Generate a prediction report in the specified format."""
     try:
-        with open(file_path, 'w') as file:
-            for i, pred in enumerate(predictions):
-                file.write(f"Email {i+1}: {pred}\n")
+        if output_format == "txt":
+            with open(file_path, 'w') as file:
+                for i, pred in enumerate(predictions):
+                    file.write(f"Email {i+1}: {pred}\n")
+        elif output_format == "csv":
+            pd.DataFrame({"Email": range(1, len(predictions) + 1), "Prediction": predictions}).to_csv(file_path, index=False)
         logging.info(f"Report saved at {file_path}")
     except Exception as e:
         logging.error(f"Failed to save report: {e}")
@@ -111,6 +115,27 @@ def get_config(config_file):
     except Exception as e:
         logging.error(f"Error reading configuration file: {e}")
     return 'emails.csv'
+
+def check_emails(model, vectorizer):
+    """Check user-provided emails for phishing."""
+    try:
+        num_emails = int(input("How many emails would you like to check? "))
+        if num_emails <= 0:
+            raise ValueError("Number of emails must be a positive integer.")
+    except ValueError as e:
+        logging.error(f"Invalid input: {e}")
+        return
+
+    predictions = []
+    for i in range(num_emails):
+        email_text = input(f"Enter the content of email {i + 1}: ")
+        result = predict_email(model, vectorizer, email_text)
+        predictions.append(result)
+        logging.info(f"Email {i+1}: {result}")
+
+    report_path = input("Enter the path to save the prediction report (e.g., report.txt): ")
+    output_format = input("Enter the report format (txt or csv): ").strip().lower()
+    generate_report(predictions, report_path, output_format)
 
 def main():
     """Main function to drive the program."""
@@ -137,23 +162,7 @@ def main():
             logging.info("Exiting the program. Goodbye!")
             break
         elif user_choice == '1':
-            try:
-                num_emails = int(input("How many emails would you like to check? "))
-                if num_emails <= 0:
-                    raise ValueError("Number of emails must be a positive integer.")
-            except ValueError as e:
-                logging.error(f"Invalid input: {e}")
-                continue
-
-            predictions = []
-            for i in range(num_emails):
-                email_text = input(f"Enter the content of email {i + 1}: ")
-                result = predict_email(model, vectorizer, email_text)
-                predictions.append(result)
-                logging.info(f"Email {i+1}: {result}")
-
-            report_path = input("Enter the path to save the prediction report (e.g., report.txt): ")
-            generate_report(predictions, report_path)
+            check_emails(model, vectorizer)
         else:
             logging.warning("Invalid choice. Please select option 1 or 2.")
 
